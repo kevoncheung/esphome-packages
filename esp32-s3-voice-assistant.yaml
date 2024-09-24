@@ -510,4 +510,4 @@ text_sensor:
 
 file:
   - id: timer_finished_wave_file
-    file: https://mirror.ghproxy.com/https://github.com/esphome/firmware/raw/main/voice-assistant/sounds/timer_finished.wav
+    file: https://ghp.ci/https://github.com/esphome/firmware/raw/main/voice-assistant/sounds/timer_finished.wav
