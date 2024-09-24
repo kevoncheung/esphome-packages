@@ -120,7 +120,16 @@ binary_sensor:
               - switch.turn_off: timer_ringing
             else:
               - switch.toggle: mute
-
+  - platform: template
+    name: "Start Listening"
+    id: listening_button
+    on_click:
+      - if:
+          condition: voice_assistant.is_running
+          then:
+            - voice_assistant.stop:
+          else:
+            - voice_assistant.start_continuous:
 light:
   - platform: esp32_rmt_led_strip
     rgb_order: GRB
