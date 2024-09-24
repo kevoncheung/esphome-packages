@@ -168,7 +168,7 @@ speaker:
   - platform: i2s_audio
     id: box_speaker
     dac_type: external
-    i2s_mode: mono
+    channel : mono
     i2s_audio_id: i2s_out
     i2s_dout_pin: ${spk_din_pin}
 
