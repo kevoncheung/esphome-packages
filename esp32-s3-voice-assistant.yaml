@@ -98,16 +98,16 @@ button:
   - platform: restart
     id: reset_btn
     name: Restart
-  - platform: template
-    name: "Start Listening"
-    id: listening_button
-    on_press:
-      - if:
-          condition: voice_assistant.is_running
-          then:
-            - voice_assistant.stop:
-          else:
-            - voice_assistant.start_continuous:
+  # - platform: template
+  #   name: "Start Listening"
+  #   id: listening_button
+  #   on_press:
+  #     - if:
+  #         condition: voice_assistant.is_running
+  #         then:
+  #           - voice_assistant.stop:
+  #         else:
+  #           - voice_assistant.start_continuous:
 esp32_touch:
   setup_mode: ${esp32_touch_setup_mode}
   measurement_duration: 0.25ms
