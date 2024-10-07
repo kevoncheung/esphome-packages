@@ -69,7 +69,7 @@ psram:
 external_components:
   - source: github://jesserockz/esphome-components
     components: [file]
-    refresh: 0d
+    refresh: 10d
 
 api:
   on_client_connected:
