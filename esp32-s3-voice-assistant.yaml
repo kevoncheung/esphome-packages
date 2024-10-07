@@ -133,7 +133,7 @@ binary_sensor:
 light:
   - platform: esp32_rmt_led_strip
     rgb_order: GRB
-    pin: GPIO7
+    pin: GPIO48
     num_leds: 1
     rmt_channel: 0
     chipset: SK6812
