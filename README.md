@@ -7,7 +7,7 @@ This repo holds the source of various packages I'm using.
 
 ## Voice assistant
 
-- 立创ESP32-S3-N8R8开发板
+- 立创·ESP32S3R8N8开发板
 - INMP441
 - MAX98357
 
