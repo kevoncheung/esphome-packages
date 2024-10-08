@@ -7,9 +7,9 @@ This repo holds the source of various packages I'm using.
 
 ## Voice assistant
 
-- ESP32-S3-DevKitC-1-N16R8V
+- 立创ESP32-S3-N8R8开发板
 - INMP441
-- MAX98357A
+- MAX98357
 
 Create a new device in the ESPHome dashboard and add the following as its config:
 
