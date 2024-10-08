@@ -11,12 +11,19 @@ This repo holds the source of various packages I'm using.
 Create a new device in the ESPHome dashboard and add the following as its config:
 
 ```yaml
+esphome:
+  name: lc-esp32s3r8n8-va
+  friendly_name: LC Voice Assist
+  # name_add_mac_suffix: true
+
 substitutions:
-substitutions:
-  name: voice-assist
-  friendly_name: Voice Assist
-  # alexa, hey_jarvis, hey_mycroft, okay_nabu
-  micro_wake_word_model: hey_mycroft
+  # alexa, hey_jarvis, hey_mycroft, okay_nabu https://ghp.ci/https://raw.githubusercontent.com/esphome/micro-wake-word-models/main/models/okay_nabu.json
+  micro_wake_word_model: hey_jarvis
+
+  # https://www.home-assistant.io/voice_control/troubleshooting/#to-tweak-the-assist-audio-configuration-for-your-device
+  # voice_assistant_noise_suppression_level: "2"
+  # voice_assistant_auto_gain: 31dBFS
+  # voice_assistant_volume_multiplier: "2.0"
 
   # INMP441
   mic_ws_pin: GPIO5
@@ -24,56 +31,50 @@ substitutions:
   mic_sd_pin: GPIO4
 
   # MAX98357A
-  spk_lrc_pin: GPIO12
-  spk_bclk_pin: GPIO13
-  spk_din_pin: GPIO14
+  spk_lrc_pin: GPIO11
+  spk_bclk_pin: GPIO12
+  spk_din_pin: GPIO13
 
-  mute_pin: GPIO11
+  mute_pin: GPIO9
   mute_pin_threshold: "160000"
+
+
+esp32:
+  flash_size: 8MB
+
+voice_assistant:
+   noise_suppression_level: 2
+   auto_gain: 31dBFS
+   volume_multiplier: 3.0
 
 packages:
   voice-assistant:
-    url: https://github.com/tronikos/esphome-packages
+    url: https://github.com/JochenZhou/esphome-packages
     ref: main
     files: [esp32-s3-voice-assistant.yaml]
     # Or to use the device as a media player:
-    # files: [esp32-s3-voice-assistant-media-player.yaml]
+    # files: [esp32-s3-voice-assistant.yaml, esp32-s3-media-player.yaml]
     refresh: 0s
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
-```
+  ap:
+    ssid: "$friendly_name-AP"
+    password: "12345678"
 
-To use additional Micro Wake Word models add:
-
-```yaml
-micro_wake_word:
-  models:
-    - model: hey_jarvis
-```
-
-To [tweak the assist audio configuration for your device](https://www.home-assistant.io/voice_control/troubleshooting#to-tweak-the-assist-audio-configuration-for-your-device), add and adjust:
-
-```yaml
-voice_assistant:
-  noise_suppression_level: 2
-  auto_gain: 31dBFS
-  volume_multiplier: 2.0
-```
-
-## BME680
-
-```yaml
 i2c:
-  sda: GPIO7
-  scl: GPIO15
+  sda: GPIO39
+  scl: GPIO40
+  scan: true
+  id: bus_a
 
-packages:
-  bme680:
-    url: https://github.com/tronikos/esphome-packages
-    ref: main
-    # file: bme680.yaml
-    file: bme680_bsec.yaml
-    # file: bme68x_bsec.yaml
+sensor:
+  - platform: hdc1080
+    temperature:
+      name: "temperature"
+    humidity:
+      name: "humidity"
+    address: 0x40
+    update_interval: 60s
 ```
