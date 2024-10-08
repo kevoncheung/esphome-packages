@@ -2,6 +2,9 @@
 
 This repo holds the source of various packages I'm using.
 
+## 硬件
+- https://oshwhub.com/jochenzhou/homeassistantai-voice-assistant
+
 ## Voice assistant
 
 - ESP32-S3-DevKitC-1-N16R8V
