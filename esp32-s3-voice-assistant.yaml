@@ -130,13 +130,14 @@ binary_sensor:
             else:
               - switch.toggle: mute
 
+# 其他配置保持不变
+
 light:
-  - platform: esp32_rmt_led_strip
-    rgb_order: GRB
+  - platform: fastled_clockless
+    chipset: SK6812
     pin: GPIO7
     num_leds: 1
-    rmt_channel: 0
-    chipset: SK6812
+    rgb_order: GRB
     name: led
     id: led
     entity_category: config
@@ -154,6 +155,7 @@ light:
           min_brightness: 50%
           max_brightness: 100%
 
+# 其他配置保持不变
 i2s_audio:
   - id: i2s_in
     i2s_lrclk_pin: ${mic_ws_pin}
